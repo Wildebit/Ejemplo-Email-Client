@@ -4,13 +4,18 @@ from email.mime.text import MIMEText
 from email.parser import BytesParser
 from email.policy import default
 
-from email_rate_limit import throttle_email_send
-from mail_config import EMAIL_PASSWORD, EMAIL_USER, POP3_PORT, POP3_SERVER, SMTP_PORT, SMTP_SERVER
+SMTP_SERVER="mail.elettrorava.es"
+SMTP_PORT=25
+POP3_SERVER="mail.elettrorava.es"
+POP3_PORT=110
+TO_EMAIL="destino@example.com"
+
+EMAIL_USER="your_email_account@example.com"
+EMAIL_PASSWORD="YOur_VerY_$aFe_PazzWOrD!"
 
 
 def enviar_correo(from_email, _password, to_email, message):
     try:
-        throttle_email_send()
         msg = MIMEText(message, "plain", "utf-8")
         msg["Subject"] = "Nova reserva: Francesco De Luca Bosso - 9-16 agost 2025"
         msg["From"] = from_email
